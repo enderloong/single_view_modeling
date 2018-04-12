@@ -10,6 +10,7 @@ import vp_box as vp
 # Basic configuration of pygame
 black = 0, 0, 0
 white = 255, 255, 255
+red = 255, 0, 0
 blue = 0, 0, 255
 pygame.init()
 
@@ -61,7 +62,21 @@ while True:
             sys.exit()
         elif event.type == MOUSEBUTTONDOWN:
             mouse_x, mouse_y = event.pos
-            [box, current_mode] = fmd.mousedown(mouse_x, mouse_y, current_mode, box)
-    
+            [box, current_mode, vp] = fmd.mousedown(mouse_x, mouse_y, current_mode, box)
+            # debug
+            print('current mode:', current_mode)
+        
+    # draw reference line
+    line_width = 3
+    if current_mode == 'f_vp':
+        pygame.draw.line(screen, red, box.info_2d.click_pos[0], box.info_2d.click_pos[1], line_width)
+        pygame.draw.line(screen, red, box.info_2d.click_pos[2], box.info_2d.click_pos[3], line_width)
+        pygame.draw.line(screen, red, box.info_2d.click_pos[4], box.info_2d.click_pos[5], line_width)
+        pygame.draw.line(screen, red, box.info_2d.click_pos[0], vp[0], line_width)
+        pygame.draw.line(screen, red, box.info_2d.click_pos[0], vp[1], line_width)
+        pygame.draw.line(screen, red, box.info_2d.click_pos[1], vp[0], line_width)
+        pygame.draw.line(screen, red, box.info_2d.click_pos[1], vp[1], line_width)
+        pygame.draw.line(screen, red, vp[0], vp[1], line_width)
+
     # update display
     pygame.display.update()
