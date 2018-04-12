@@ -8,6 +8,7 @@ import cv2
 import f_mousedown as fmd
 import vp_box as vp
 import extract_texture as ett
+import mousenow as msn
 
 # Basic configuration of pygame
 black = 0, 0, 0
@@ -47,7 +48,7 @@ class proc_3d():
     x_dist = 1
     y_dist = 0
     z_dist = 1
-    cp_3d = [[0,0,0]] * 7
+    cp_3d = [[0,0,0]] * 8
     current_node = 0
 
     def build3d(self, info_2d):
@@ -60,6 +61,7 @@ class proc_3d():
         self.cp_3d[4] = [0, self.y_dist, self.z_dist]
         self.cp_3d[5] = [0, self.y_dist, 0]
         self.cp_3d[6] = [self.x_dist, self.y_dist, self.z_dist]
+        self.cp_3d[7] = [self.x_dist, self.y_dist, 0]
 
 # proc data
 class proc_img():
