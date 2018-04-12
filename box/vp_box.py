@@ -9,10 +9,12 @@ def vanished_point_box(box):
             (box.info_2d.click_pos[2][0] - box.info_2d.click_pos[3][0] + box.info_2d.click_pos[2][1] - box.info_2d.click_pos[3][1]):
             print('cannot find vanished point, please repeat choosing points')
             mode = 'in_p1'
+            box.info_2d.cc_num = 0
         elif (box.info_2d.click_pos[0][0] - box.info_2d.click_pos[1][0] + box.info_2d.click_pos[0][1] - box.info_2d.click_pos[1][1]) == \
             (box.info_2d.click_pos[4][0] - box.info_2d.click_pos[5][0] + box.info_2d.click_pos[4][1] - box.info_2d.click_pos[5][1]):
             print('cannot find vanished point, please repeat choosing points')
             mode = 'in_p1'
+            box.info_2d.cc_num = 0
         else:
             # vp = (p11 * p22 - p12 * p21) / (p11 + p22 - p12 - p21)
             vp1_x = (box.info_2d.click_pos[0][0] * box.info_2d.click_pos[3][0] - box.info_2d.click_pos[1][0] * box.info_2d.click_pos[2][0]) / (box.info_2d.click_pos[0][0] + box.info_2d.click_pos[3][0] - box.info_2d.click_pos[1][0] - box.info_2d.click_pos[2][0])

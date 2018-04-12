@@ -2,6 +2,7 @@ from PIL import Image
 import sys
 
 import vp_box as vpb
+import compute_eqs as cpe
 
 def pred_x(box, mouse_y):
     if box.info_2d.cc_num == 3 and box.info_2d.click_pos[0][1] < box.info_2d.click_pos[1][1]:
@@ -87,5 +88,6 @@ def mousedown(mouse_x, mouse_y, mode, box):
         [mode, vp1, vp2] = vpb.vanished_point_box(box)
         vp[0] = vp1
         vp[1] = vp2
+        box = cpe.compute_upper_plane(vp, box)
     return [box, mode, vp]
 
