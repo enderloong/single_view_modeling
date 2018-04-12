@@ -2,10 +2,12 @@
 import pygame, sys, math
 from pygame.locals import *
 from PIL import Image
+import cv2
 
 # import python files
 import f_mousedown as fmd
 import vp_box as vp
+import extract_texture as ett
 
 # Basic configuration of pygame
 black = 0, 0, 0
@@ -15,11 +17,11 @@ blue = 0, 0, 255
 pygame.init()
 
 # read box image file
-box_img = Image.open('box.bmp')
+box_img = cv2.imread('box.bmp')
 box_pyg = pygame.image.load('box.bmp')
 
 # set up window
-[img_height, img_width] = box_img.size
+[img_width, img_height, img_channels] = box_img.shape
 screen = pygame.display.set_mode((img_height + 10, img_width + 10))
 pygame.display.set_caption('Single View Modeling -- Box')
 myfont = pygame.font.Font(None, 60)
@@ -53,7 +55,7 @@ class proc_3d():
         self.cp_3d[1] = [0, 0, 0]
         self.cp_3d[2] = [self.x_dist, 0, self.z_dist]
         self.cp_3d[3] = [self.x_dist, 0, 0]
-        cos_ratio = (info_2d.click_pos[1][1] - info_2d.click_pos[0][1]) / math.sqrt((info_2d.click_pos[1][1])^2 + (info_2d.click_pos[0][1])^2)
+        cos_ratio = (info_2d.click_pos[1][1] - info_2d.click_pos[0][1]) / math.sqrt((info_2d.click_pos[1][1])**2 + (info_2d.click_pos[0][1])**2)
         self.y_dist = (1 - (info_2d.click_pos[5][1] - info_2d.click_pos[4][1])/ (cos_ratio * self.z_dist)) / (1 - (info_2d.click_pos[3][1] - info_2d.click_pos[2][1])/(cos_ratio * self.z_dist)) * self.x_dist
         self.cp_3d[4] = [0, self.y_dist, self.z_dist]
         self.cp_3d[5] = [0, self.y_dist, 0]
@@ -91,9 +93,9 @@ while True:
         print(box.info_3d.cp_3d[6])
         current_mode = 'f_3d'
     
-    # draw reference line
+    # draw reference shapes
     line_width = 3
-    if current_mode == 'f_3d':
+    if current_mode in ['f_3d', 'f_warp']:
         pygame.draw.line(screen, red, box.info_2d.click_pos[0], box.info_2d.click_pos[1], line_width)
         pygame.draw.line(screen, red, box.info_2d.click_pos[2], box.info_2d.click_pos[3], line_width)
         pygame.draw.line(screen, red, box.info_2d.click_pos[4], box.info_2d.click_pos[5], line_width)
@@ -104,6 +106,16 @@ while True:
         pygame.draw.line(screen, red, box.info_2d.click_pos[2], box.info_2d.click_pos[6], line_width)
         pygame.draw.line(screen, red, box.info_2d.click_pos[4], box.info_2d.click_pos[6], line_width)
         pygame.draw.line(screen, red, vp[0], vp[1], line_width)
+    for i in range(box.info_2d.cc_num):
+        draw_x = int(box.info_2d.click_pos[i][0]) + 5
+        draw_y = int(box.info_2d.click_pos[i][1]) + 5
+        pygame.draw.circle(screen, blue, (draw_x, draw_y), 4, 0)
+
+    # extract textures
+    if current_mode == 'f_3d':
+        ett.extract_texture(box)
+        current_mode = 'f_warp'
+        
 
     # update display
     pygame.display.update()
