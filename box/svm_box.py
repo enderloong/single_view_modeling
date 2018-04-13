@@ -8,7 +8,8 @@ import cv2
 import f_mousedown as fmd
 import vp_box as vp
 import extract_texture as ett
-import mousenow as msn
+import vrml
+# import mousenow as msn
 
 # Basic configuration of pygame
 black = 0, 0, 0
@@ -112,6 +113,32 @@ while True:
         draw_x = int(box.info_2d.click_pos[i][0]) + 5
         draw_y = int(box.info_2d.click_pos[i][1]) + 5
         pygame.draw.circle(screen, blue, (draw_x, draw_y), 4, 0)
+
+    if current_mode == 'f_warp':
+        vr_box = vrml.Vrml()
+        world = box.info_3d.cp_3d
+
+        texture = []
+        for i in range(2):
+            texture.append([i, 0])
+            texture.append([i, 1])
+
+        faces = []
+        faces.append([world[0], world[1], world[3], world[2]])
+        faces.append([world[4], world[5], world[1], world[0]])
+        faces.append([world[4], world[0], world[2], world[6]])
+        faces.append([world[2], world[3], world[7], world[6]])
+        faces.append([world[7], world[3], world[1], world[5]])
+        faces.append([world[6], world[7], world[5], world[4]])
+
+        vr_box.startVrml()
+        vr_box.appendPolygon('texture1.jpg', faces[0], texture)
+        vr_box.appendPolygon('texture2.jpg', faces[1], texture)
+        vr_box.appendPolygon('texture3.jpg', faces[2], texture)
+        vr_box.appendPolygon('grey.jpg', faces[3], texture)
+        vr_box.appendPolygon('grey.jpg', faces[4], texture)
+        vr_box.appendPolygon('grey.jpg', faces[5], texture)
+        vr_box.endVrml()
 
     # extract textures
     if current_mode == 'f_3d':

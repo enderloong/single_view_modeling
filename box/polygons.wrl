@@ -1,0 +1,119 @@
+#VRML V2.0 utf8
+PointLight{ intensity 1 location 50 100 300 }
+PointLight{ intensity 1 location 40 100 250 }
+PointLight{ intensity 1 location 60 100 250 }
+PointLight{ intensity 1 location 20 100 100 }
+Shape {
+appearance Appearance { texture ImageTexture { url "texture1.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	0 0 1 ,
+	0 0 0 ,
+	1 0 0 ,
+	1 0 1 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
+1 0 ,
+1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "texture2.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	0 0.9472838927317929 1 ,
+	0 0.9472838927317929 0 ,
+	0 0 0 ,
+	0 0 1 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
+1 0 ,
+1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "texture3.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	0 0.9472838927317929 1 ,
+	0 0 1 ,
+	1 0 1 ,
+	1 0.9472838927317929 1 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
+1 0 ,
+1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "grey.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	1 0 1 ,
+	1 0 0 ,
+	1 0.9472838927317929 0 ,
+	1 0.9472838927317929 1 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
+1 0 ,
+1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "grey.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	1 0.9472838927317929 0 ,
+	1 0 0 ,
+	0 0 0 ,
+	0 0.9472838927317929 0 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
+1 0 ,
+1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "grey.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	1 0.9472838927317929 1 ,
+	1 0.9472838927317929 0 ,
+	0 0.9472838927317929 0 ,
+	0 0.9472838927317929 1 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
+1 0 ,
+1 1 ,
+]}
+}
+
+}
+
