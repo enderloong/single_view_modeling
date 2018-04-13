@@ -13,13 +13,13 @@ blue = 0, 0, 255
 pygame.init()
 
 # read box image file
-rw_img = cv2.imread('realworld.png')
-rw_pyg = pygame.image.load('realworld.png')
+rw_img = cv2.imread('painting.png')
+rw_pyg = pygame.image.load('painting.png')
 
 # set up window
 [img_width, img_height, img_channels] = rw_img.shape
 screen = pygame.display.set_mode((img_height + 10, img_width + 10))
-pygame.display.set_caption('Single View Modeling -- Real World Image')
+pygame.display.set_caption('Single View Modeling -- Painting')
 
 # control variables
 import c_proc_control as cpc
@@ -28,17 +28,17 @@ procsvm_rw = cpc.proc_control()
 # image information
 import c_rwimg as crw
 imgsvm_rw = crw.rwimg(rw_img)
-max_plane = 5
+max_plane = 4
 ttt = [imgsvm_rw] * max_plane
 current_plane = 0
 
 # real world information
 true_point = [\
-    [[0, 0, 0], [0, 2.5, 0], [3, 0, -2]], # stairs
-    [[0, 0, 1], [0, 0, 0.25], [3, 0, -1]], # left wall
-    [[0, 2.5, 1], [0, 2.5, 0.25], [3, 2.5, -1]], # right
-    [[3,0,-2], [3, 2.5, -2], [5, 0, -2]], # front floor
-    [[5, 0, -2], [5, 2.5, -2], [5, 0, -1]] # front wall
+    [[-2, 0, 0], [-2, 5, 0], [20, 0, 0]], # way
+    [[-2, 0, 5], [-2, 0, 0], [20, 0, 5]], # left lamps
+    [[-2, 5, 5], [-2, 5, 0], [20, 5, 5]], # right lamps
+    [[10, 25, 17], [10, 25, 2], [30, 0, 17]], # house
+    #[[5, 0, -2], [5, 2.5, -2], [5, 0, -1]] # front wall
 ]
 
 # initize proc struct
