@@ -1,0 +1,66 @@
+#VRML V2.0 utf8
+PointLight{ intensity 1 location 50 100 300 }
+PointLight{ intensity 1 location 40 100 250 }
+PointLight{ intensity 1 location 60 100 250 }
+PointLight{ intensity 1 location 20 100 100 }
+
+
+Shape {
+appearance Appearance { texture ImageTexture { url "texture1-1.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	0 31 0 ,
+	0 0 0 ,
+	22 0 0 ,
+	22 31 0 ,
+]}
+texCoord TextureCoordinate { point [
+1 0 ,
+1 1 ,
+0 1 ,
+0 0 ,
+]}
+}
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "texture1-2.jpg" }}
+geometry IndexedFaceSet { coordIndex [3, 2, 1, 0, -1]
+coord Coordinate { point [
+	0   31  0,
+	0   0   0,
+	-10 0  20,
+	-10 31 20,
+]}
+texCoord TextureCoordinate { point [
+0 0,
+1 0,
+1 1,
+0 1,
+]}
+}
+
+}
+Shape {
+appearance Appearance { texture ImageTexture { url "texture2-1.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	0   31  0,
+	0   0   0,
+	-10 0  20,
+	-10 31 20,
+]}
+texCoord TextureCoordinate { point [
+1 0 ,
+1 1 ,
+0 1 ,
+0 0 ,
+]}
+}
+
+}
+
+
+
+
+
