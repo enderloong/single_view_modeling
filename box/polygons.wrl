@@ -7,18 +7,14 @@ Shape {
 appearance Appearance { texture ImageTexture { url "texture1.jpg" }}
 geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
 coord Coordinate { point [
+	0 0 1.83 ,
 	0 0 0 ,
-	100 0 0 ,
-	0 100 0 ,
-	100 100 0 ,
+	4 0 0 ,
+	4 0 1.83 ,
 ]}
 texCoord TextureCoordinate { point [
 0 1 ,
 0 0 ,
-1 0 ,
-1 1 ,
-1 0 ,
-1 1 ,
 1 0 ,
 1 1 ,
 ]}
@@ -30,18 +26,14 @@ Shape {
 appearance Appearance { texture ImageTexture { url "texture2.jpg" }}
 geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
 coord Coordinate { point [
+	0 3 1.83 ,
+	0 3 0 ,
 	0 0 0 ,
-	100 0 0 ,
-	0 100 0 ,
-	100 100 0 ,
+	0 0 1.83 ,
 ]}
 texCoord TextureCoordinate { point [
 0 1 ,
 0 0 ,
-1 0 ,
-1 1 ,
-1 0 ,
-1 1 ,
 1 0 ,
 1 1 ,
 ]}
@@ -53,18 +45,71 @@ Shape {
 appearance Appearance { texture ImageTexture { url "texture3.jpg" }}
 geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
 coord Coordinate { point [
-	0 0 0 ,
-	100 0 0 ,
-	0 100 0 ,
-	100 100 0 ,
+	0 3 1.83 ,
+	0 0 1.83 ,
+	4 0 1.83 ,
+	4 3 1.83 ,
 ]}
 texCoord TextureCoordinate { point [
 0 1 ,
 0 0 ,
 1 0 ,
 1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "grey.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	4 0 1.83 ,
+	4 0 0 ,
+	4 3 0 ,
+	4 3 1.83 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
 1 0 ,
 1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "grey.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	4 3 0 ,
+	4 0 0 ,
+	0 0 0 ,
+	0 3 0 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
+1 0 ,
+1 1 ,
+]}
+}
+
+}
+
+Shape {
+appearance Appearance { texture ImageTexture { url "grey.jpg" }}
+geometry IndexedFaceSet { coordIndex [0, 1, 2, 3, -1]
+coord Coordinate { point [
+	4 3 1.83 ,
+	4 3 0 ,
+	0 3 0 ,
+	0 3 1.83 ,
+]}
+texCoord TextureCoordinate { point [
+0 1 ,
+0 0 ,
 1 0 ,
 1 1 ,
 ]}

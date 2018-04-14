@@ -46,9 +46,9 @@ class proc_3d():
     base_point = [0, 0]
     # x z y
     # \ | /
-    x_dist = 1
-    y_dist = 0
-    z_dist = 1
+    x_dist = 4
+    y_dist = 3
+    z_dist = 1.83
     cp_3d = [[0,0,0]] * 8
     current_node = 0
 
@@ -57,12 +57,39 @@ class proc_3d():
         self.cp_3d[1] = [0, 0, 0]
         self.cp_3d[2] = [self.x_dist, 0, self.z_dist]
         self.cp_3d[3] = [self.x_dist, 0, 0]
-        cos_ratio = (info_2d.click_pos[1][1] - info_2d.click_pos[0][1]) / math.sqrt((info_2d.click_pos[1][1])**2 + (info_2d.click_pos[0][1])**2)
-        self.y_dist = (1 - (info_2d.click_pos[5][1] - info_2d.click_pos[4][1])/ (cos_ratio * self.z_dist)) / (1 - (info_2d.click_pos[3][1] - info_2d.click_pos[2][1])/(cos_ratio * self.z_dist)) * self.x_dist
-        self.cp_3d[4] = [0, self.y_dist, self.z_dist]
-        self.cp_3d[5] = [0, self.y_dist, 0]
-        self.cp_3d[6] = [self.x_dist, self.y_dist, self.z_dist]
-        self.cp_3d[7] = [self.x_dist, self.y_dist, 0]
+        if self.y_dist == 0:
+            cos_ratio = (info_2d.click_pos[1][1] - info_2d.click_pos[0][1]) / math.sqrt((info_2d.click_pos[1][1])**2 + (info_2d.click_pos[0][1])**2)
+            self.y_dist = (1 - (info_2d.click_pos[5][1] - info_2d.click_pos[4][1])/ (cos_ratio * self.z_dist)) / (1 - (info_2d.click_pos[3][1] - info_2d.click_pos[2][1])/(cos_ratio * self.z_dist)) * self.x_dist
+            self.cp_3d[4] = [0, self.y_dist, self.z_dist]
+            self.cp_3d[5] = [0, self.y_dist, 0]
+            self.cp_3d[6] = [self.x_dist, self.y_dist, self.z_dist]
+            self.cp_3d[7] = [self.x_dist, self.y_dist, 0]
+        else:
+            self.cp_3d[4] = [0, self.y_dist, self.z_dist]
+            self.cp_3d[5] = [0, self.y_dist, 0]
+            self.cp_3d[6] = [self.x_dist, self.y_dist, self.z_dist]
+            self.cp_3d[7] = [self.x_dist, self.y_dist, 0]
+# class proc_3d():
+#     base_point = [0, 0]
+#     # x z y
+#     # \ | /
+#     x_dist = 1
+#     y_dist = 0
+#     z_dist = 1
+#     cp_3d = [[0,0,0]] * 8
+#     current_node = 0
+#
+#     def build3d(self, info_2d):
+#         self.cp_3d[0] = [0, 0, self.z_dist]
+#         self.cp_3d[1] = [0, 0, 0]
+#         self.cp_3d[2] = [self.x_dist, 0, self.z_dist]
+#         self.cp_3d[3] = [self.x_dist, 0, 0]
+#         cos_ratio = (info_2d.click_pos[1][1] - info_2d.click_pos[0][1]) / math.sqrt((info_2d.click_pos[1][1])**2 + (info_2d.click_pos[0][1])**2)
+#         self.y_dist = (1 - (info_2d.click_pos[5][1] - info_2d.click_pos[4][1])/ (cos_ratio * self.z_dist)) / (1 - (info_2d.click_pos[3][1] - info_2d.click_pos[2][1])/(cos_ratio * self.z_dist)) * self.x_dist
+#         self.cp_3d[4] = [0, self.y_dist, self.z_dist]
+#         self.cp_3d[5] = [0, self.y_dist, 0]
+#         self.cp_3d[6] = [self.x_dist, self.y_dist, self.z_dist]
+#         self.cp_3d[7] = [self.x_dist, self.y_dist, 0]
 
 # proc data
 class proc_img():
